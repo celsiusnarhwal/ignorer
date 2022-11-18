@@ -4,11 +4,12 @@ from io import StringIO
 from pathlib import Path
 from typing import List
 
+import click
 import inflect as ifl
 import pyperclip
 from InquirerPy.base import Choice
 
-import prompts
+from ignorer import prompts
 
 inflect = ifl.engine()
 
@@ -170,7 +171,7 @@ def get_output() -> str:
 
 
 def main():
-    print("tuneout © 2022-present celsius narhwal. Licensed under MIT (see --license).\n")
+    print("ignorer © 2022-present celsius narhwal. Licensed under MIT (see --license).\n")
     templates = get_templates()
     modifiers = get_modifiers()
     output = get_output()
@@ -190,5 +191,20 @@ def main():
         print("\n.gitignore copied to clipboard.")
 
 
+@click.command()
+@click.option("--license", "show_license", is_flag=True, help="See ignorer's license.")
+def cli(show_license: bool):
+    if show_license:
+        print((Path(__file__).parent / "LICENSE").read_text())
+    else:
+        while True:
+            try:
+                main()
+                break
+            except KeyboardInterrupt or EOFError:
+                print("\nExiting.")
+                break
+
+
 if __name__ == '__main__':
-    main()
+    cli()
