@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "gitignore"
+version = "0.1.0"
+description = ""
+authors = ["celsius narhwal <celsius@celsiusnarhwal.dev>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+inquirerpy = "^0.3.4"
+pyperclip = "^1.8.2"
+gitignore-parser = "^0.1.0"
+inflect = "^6.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
