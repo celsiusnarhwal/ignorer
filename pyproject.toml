@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gitignore"
+name = "tuneout"
 version = "1.0.0"
 description = ""
 authors = ["celsius narhwal <hello@celsiusnarhwal.dev>"]
