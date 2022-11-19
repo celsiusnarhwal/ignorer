@@ -10,7 +10,6 @@ license = "MIT"
 python = "^3.10"
 inquirerpy = "^0.3.4"
 pyperclip = "^1.8.2"
-gitignore-parser = "^0.1.0"
 inflect = "^6.0.2"
 click = "^8.1.3"
 
