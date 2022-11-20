@@ -51,14 +51,14 @@ def save_gitignore(gitignore: str, use_cwd: bool = False) -> None:
             save_path = Path.cwd() / ".gitignore"
         else:
             def path_postprocessor(path: str) -> str:
-                path = Path(path) / ".gitignore"
+                path = Path(path).joinpath(".gitignore")
 
                 path.parent.mkdir(parents=True, exist_ok=True)
                 return path.expanduser().resolve()
 
             save_path = prompts.filepath(
                 message="Where should your .gitignore be saved?",
-                instruction="Enter a directory.",
+                instruction="Enter a path.",
                 long_instruction="Both absolute and relative paths are supported.\n"
                                  "Nonexistent directories will be created as necessary.",
                 multicolumn_complete=True,
@@ -86,9 +86,7 @@ def save_gitignore(gitignore: str, use_cwd: bool = False) -> None:
                 continue
 
         else:
-            if save_path.name != ".gitignore":
-                save_path.mkdir(parents=True, exist_ok=True)
-
+            save_path.parent.mkdir(parents=True, exist_ok=True)
             save_path.write_text(gitignore)
             break
 
