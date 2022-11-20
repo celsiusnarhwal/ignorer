@@ -60,8 +60,8 @@ def save_gitignore(gitignore: str, use_cwd: bool = False) -> None:
 
             save_path = prompts.filepath(
                 message="Where should your .gitignore be saved?",
-                instruction="Your answer will be interpreted as a directory.",
-                long_instruction="Both absolute and relative paths are supported."
+                instruction="Enter a directory.",
+                long_instruction="Both absolute and relative paths are supported.\n"
                                  "Nonexistent directories will be created as necessary.",
                 multicolumn_complete=True,
                 only_directories=True,
@@ -146,7 +146,7 @@ def get_modifiers() -> List[str]:
         return f"Generating without {inflect.join(words, conj='or')}."
 
     modifiers = prompts.select(message="Choose some options.",
-                               instruction="(You can also skip this question with Control + D.)",
+                               instruction="Or skip this question with Control + D.",
                                long_instruction=multiselect_controls,
                                choices=modifier_choices,
                                multiselect=True,
@@ -201,7 +201,7 @@ def cli(show_license: bool):
             try:
                 main()
                 break
-            except KeyboardInterrupt or EOFError:
+            except (KeyboardInterrupt, EOFError):
                 print("\nExiting.")
                 break
 
