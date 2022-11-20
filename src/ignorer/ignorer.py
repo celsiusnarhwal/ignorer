@@ -51,9 +51,7 @@ def save_gitignore(gitignore: str, use_cwd: bool = False) -> None:
             save_path = Path.cwd() / ".gitignore"
         else:
             def path_postprocessor(path: str) -> str:
-                path = Path(path)
-                if path.name != ".gitignore":
-                    path = path / ".gitignore"
+                path = Path(path) / ".gitignore"
 
                 path.parent.mkdir(parents=True, exist_ok=True)
                 return path.expanduser().resolve()
