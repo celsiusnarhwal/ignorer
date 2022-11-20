@@ -1,17 +1,32 @@
+from pathlib import Path
+
 import invoke
 from invoke import task
 
 
-@task
-def build_formula(ctx, package, formula_name=None):
-    formula_name = formula_name or package
+@task(aliases=["hbf"])
+def build_formula(ctx, package):
+    formula_name = "ignorer"
+    formula_description = "Generate .gitignore files from your command line"
+    formula_homepage = "https://github.com/celsiusnarhwal/ignorer"
+    minimum_python_version = "3.10"
 
     cmds = [
         "python -m venv venv",
         "source venv/bin/activate",
-        f"pip install {package} homebrew-pypi-poet",
-        f"poet -f {package} > homebrew/{formula_name}.rb",
+        f"pip install {package} homebrew-pypi-poet --no-cache-dir",
+        f"poet -f {package} > {formula_name}.rb",
         "rm -rf venv",
     ]
 
     invoke.run(" && ".join(cmds))
+
+    with (Path(__file__).parent / f"{formula_name}.rb").open("a+") as formula:
+        formula.seek(0)
+        text = f"# Homebrew formula for {package}. {formula_homepage}\n\n"
+        text += formula.read()
+        text = (text.replace('desc "Shiny new formula"', f'desc "{formula_description}"', 1)
+                .replace('homepage ""', f'homepage "{formula_homepage}"', 1)
+                .replace('depends_on "python3"', f'depends_on "python@{minimum_python_version}"', 1))
+        formula.truncate(0)
+        formula.write(text)
