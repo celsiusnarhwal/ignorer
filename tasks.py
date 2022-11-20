@@ -4,8 +4,8 @@ import invoke
 from invoke import task
 
 
-@task(aliases=["hbf"])
-def build_formula(ctx, package):
+@task(aliases=["hbf"], optional=["--verbose"])
+def build_formula(ctx, package, verbose=False):
     formula_name = "ignorer"
     formula_description = "Generate .gitignore files from your command line"
     formula_homepage = "https://github.com/celsiusnarhwal/ignorer"
@@ -15,13 +15,13 @@ def build_formula(ctx, package):
         "python -m venv venv",
         "source venv/bin/activate",
         f"pip install {package} homebrew-pypi-poet --no-cache-dir",
-        f"poet -f {package} > {formula_name}.rb",
+        f"poet -f {package} > homebrew-formulae/Formula/{formula_name}.rb",
         "rm -rf venv",
     ]
 
-    invoke.run(" && ".join(cmds))
+    invoke.run(" && ".join(cmds), hide=not verbose)
 
-    with (Path(__file__).parent / f"{formula_name}.rb").open("a+") as formula:
+    with (Path(__file__).parent / "homebrew-formulae" / "Formula" / f"{formula_name}.rb").open("a+") as formula:
         formula.seek(0)
         text = f"# Homebrew formula for {package}. {formula_homepage}\n\n"
         text += formula.read()
