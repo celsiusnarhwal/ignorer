@@ -1,10 +1,22 @@
 [tool.poetry]
 name = "ignorer"
-version = "0.0.3"
-description = ""
+version = "1.0.0"
+description = "Generate .gitignore files from your command line"
 authors = ["celsius narhwal <hello@celsiusnarhwal.dev>"]
 readme = "README.md"
 license = "MIT"
+repository = "https://github.com/celsiusnarhwal/ignorer"
+keywords = ["gitignore", "git", "ignore", "cli"]
+exclude = ["README.md"]
+classifiers = [
+	"Development Status :: 5 - Production/Stable",
+	"Environment :: Console",
+	"Intended Audience :: Developers",
+	"Operating System :: OS Independent",
+	"Topic :: Software Development :: Code Generators",
+	"Topic :: Utilities",
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
