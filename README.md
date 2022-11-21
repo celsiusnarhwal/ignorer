@@ -13,12 +13,13 @@ The recommended, cross-platform, way of installing ignorer is via [pipx](https:/
 pipx install ignorer
 ```
 
-### Homebrew
+### Homebrew (macOS and Linux)
 
-macOS users who would rather install via [Homebrew](https://brew.sh) can do that instead:
+A [Homebrew](https://brew.sh/) formula for ignorer is available from
+the [Houkago Tea Tap](https://github.com/celsiusnarhwal/homebrew-htt).
 
 ```bash
-brew tap celsiusnarhwal/formulae
+brew tap celsiusnarhwal/htt
 brew install ignorer
 ```
 
