@@ -43,7 +43,7 @@ That's it. ignorer will interactively guide you through the rest.
 
 See it in action below.
 
-![A GIF demonstrating the usage of ignorer.](media/demonstration.gif)]
+![A GIF demonstrating the usage of ignorer.](media/demonstration.gif)
 
 # Acknowledgements
 
