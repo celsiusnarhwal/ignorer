@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "ignorer"
-version = "1.0.1"
+version = "1.0.2"
 description = "Generate .gitignore files from your command line"
 authors = ["celsius narhwal <hello@celsiusnarhwal.dev>"]
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/celsiusnarhwal/ignorer"
 keywords = ["gitignore", "git", "ignore", "cli"]
-exclude = ["README.md"]
+include = ["README.md"]
 classifiers = [
 	"Development Status :: 5 - Production/Stable",
 	"Environment :: Console",
