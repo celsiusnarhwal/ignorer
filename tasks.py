@@ -9,7 +9,7 @@ def build_formula(ctx, package, verbose=False):
     formula_name = "ignorer"
     formula_description = "Generate .gitignore files from your command line"
     formula_homepage = "https://github.com/celsiusnarhwal/ignorer"
-    formula_python_version = "3.10"
+    formula_python_version = 3
     formula_path = Path(f"houkago-tea-tap/Formula/{formula_name}.rb")
 
     cmds = [
@@ -27,7 +27,12 @@ def build_formula(ctx, package, verbose=False):
         text = f"# Homebrew formula for {package}. {formula_homepage}\n\n"
         text += formula.read()
         text = (text.replace('desc "Shiny new formula"', f'desc "{formula_description}"', 1)
-                .replace('homepage ""', f'homepage "{formula_homepage}"', 1)
-                .replace('depends_on "python3"', f'depends_on "python@{formula_python_version}"', 1))
+                .replace('homepage ""', f'homepage "{formula_homepage}"', 1))
+
+        if type(formula_python_version) == int:
+            text = text.replace('depends_on "python3"', f'depends_on "python{formula_python_version}"', 1)
+        else:
+            text = text.replace('depends_on "python3"', f'depends_on "python@{formula_python_version}"', 1)
+
         formula.truncate(0)
         formula.write(text)
