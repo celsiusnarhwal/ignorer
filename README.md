@@ -46,7 +46,7 @@ See it in action below.
 
 ![A GIF demonstrating the usage of ignorer.](media/demonstration.gif)
 
-# Acknowledgements
+## Acknowledgements
 
 ignorer's functionality is largely based on JetBrains' [.ignore plugin](https://github.com/JetBrains/idea-gitignore)
 for their IDEs.
