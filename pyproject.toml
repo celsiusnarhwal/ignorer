@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ignorer"
-version = "1.0.2"
+version = "1.0.3"
 description = "Generate .gitignore files from your command line"
 authors = ["celsius narhwal <hello@celsiusnarhwal.dev>"]
 readme = "README.md"

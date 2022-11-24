@@ -191,7 +191,7 @@ def main():
 @click.option("--license", "show_license", is_flag=True, help="See ignorer's license.")
 def cli(show_license: bool):
     if show_license:
-        print((Path(__file__).parent / "LICENSE").read_text())
+        print((Path(__file__).parent / "LICENSE.md").read_text())
     else:
         while True:
             try:
